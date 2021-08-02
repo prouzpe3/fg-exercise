@@ -1,0 +1,22 @@
+apiPackage: fg.exercise.apis
+artifactId: fg-exercise
+artifactUrl: https://github.com/prouzpe3/fg-exercise
+basePackage: fg.exercise
+configPackage: fg.exercise.configurations
+dateLibrary: java8
+delegatePattern: true
+developerEmail: prouza.pet@gmail.com
+developerName: Petr Prouza
+groupId: fg.exercise
+hateoas: true
+hideGenerationTimestamp: true
+invokerPackage: fg.exercise.apis
+licenseName: MIT
+licenseUrl: https://github.com/prouzpe3/fg-exercise/blob/main/LICENSE
+modelPackage: fg.exercise.models.dtos
+performBeanValidation: true
+returnSuccessCode: true
+serializableModel: true
+singleContentTypes: true
+title: FG-Exercise
+unhandledException: true
