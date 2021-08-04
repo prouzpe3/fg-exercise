@@ -6,9 +6,9 @@ info:
   license:
     name: MIT
     url: https://github.com/prouzpe3/fg-exercise/blob/main/LICENSE
-  version: 1.0.0
+  version: 1.0.2
 servers:
-- url: https://virtserver.swaggerhub.com/p6331/FG-Exercise/1.0.0
+- url: https://virtserver.swaggerhub.com/FG-Exercise
   description: SwaggerHub API Auto Mocking
 paths:
   /temperature-range:
@@ -42,6 +42,8 @@ paths:
         style: form
         explode: true
         schema:
+          maximum: 24
+          minimum: 0
           type: integer
           format: int32
         example: 10
@@ -52,6 +54,8 @@ paths:
         style: form
         explode: true
         schema:
+          maximum: 24
+          minimum: 0
           type: integer
           format: int32
         example: 15
@@ -87,7 +91,7 @@ paths:
         "201":
           description: Successful Response
           headers:
-            schema:
+            Location:
               $ref: '#/components/headers/TemperatureLocation'
           content:
             application/json:
@@ -137,10 +141,16 @@ paths:
               $ref: '#/components/schemas/PutTemperature'
         required: true
       responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTemperature'
         "201":
           description: Successful Response
           headers:
-            schema:
+            Location:
               $ref: '#/components/headers/TemperatureLocation'
           content:
             application/json:
