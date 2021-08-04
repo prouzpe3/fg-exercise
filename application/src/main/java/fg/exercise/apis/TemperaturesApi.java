@@ -91,10 +91,12 @@ public interface TemperaturesApi {
      *
      * @param id  (required)
      * @param putTemperatureDto Body describing the new values for the temperature record to be stored in the database. (required)
-     * @return Successful Response (status code 201)
+     * @return Successful Response (status code 200)
+     *         or Successful Response (status code 201)
      */
     @ApiOperation(value = "Update given temperature", nickname = "temperaturesIdPut", notes = "", response = GetTemperatureDto.class, tags={  })
     @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Successful Response", response = GetTemperatureDto.class),
         @ApiResponse(code = 201, message = "Successful Response", response = GetTemperatureDto.class) })
     @RequestMapping(
         method = RequestMethod.PUT,

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Optional;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 @Controller
-@RequestMapping("${openapi.FG-Exercise.base-path:/p6331/FG-Exercise/1.0.0}")
+@RequestMapping("${openapi.FG-Exercise.base-path:/FG-Exercise}")
 public class TemperaturesApiController implements TemperaturesApi {
 
     private final TemperaturesApiDelegate delegate;
