@@ -21,8 +21,9 @@ public class TemperatureModelMapperImpl implements TemperatureModelMapper {
 
 
     @Override
-    public Temperature convertToEntity(PutTemperatureDto putTemperatureDto) {
+    public Temperature convertToEntity(Long id, PutTemperatureDto putTemperatureDto) {
         Temperature temperature = new Temperature();
+        temperature.setId(id);
         temperature.setTemperature(putTemperatureDto.getTemperature());
         temperature.setLocalDate(TimestampConverter.timestampToDate(putTemperatureDto.getTimestamp()));
         temperature.setLocalTime(TimestampConverter.timestampToTime(putTemperatureDto.getTimestamp()));

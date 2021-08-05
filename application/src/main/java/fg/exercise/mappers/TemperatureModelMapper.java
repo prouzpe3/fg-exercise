@@ -11,7 +11,7 @@ public interface TemperatureModelMapper {
     Temperature convertToEntity(PostTemperatureDto postTemperatureDto);
 
 
-    Temperature convertToEntity(PutTemperatureDto putTemperatureDto);
+    Temperature convertToEntity(Long id, PutTemperatureDto putTemperatureDto);
 
 
     GetTemperatureDto convertToDto(Temperature temperature);
