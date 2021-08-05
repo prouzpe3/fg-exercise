@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  app:
+    image: 'docker-spring-boot-postgres:latest'
+    build:
+      context: .
+    container_name: fg-exercise-app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/fg_postgres
+      - SPRING_DATASOURCE_USERNAME=fg_postgres
+      - SPRING_DATASOURCE_PASSWORD=fg_postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - 8080:8080
+
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: fg-db
+    volumes:
+      - fg_postgres:/tmp/fgdb
+    environment:
+      - POSTGRES_USER=fg_postgres
+      - POSTGRES_PASSWORD=fg_postgres
+    ports:
+      - 5432:5432
+
+volumes:
+  fg_postgres: {}
