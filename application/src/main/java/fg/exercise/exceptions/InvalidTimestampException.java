@@ -9,6 +9,6 @@ public class InvalidTimestampException extends BadRequestException {
 
     public InvalidTimestampException(DateTimeParseException e) {
         this.code = 100;
-        this.description = "Input string [" + e.getParsedString() + "] could not be parsed. Supported format is: [" + TIMESTAMP_FORMAT + "]";
+        this.description = String.format("Input string [%s] could not be parsed. Supported format is: [%s]", e.getParsedString(), TIMESTAMP_FORMAT);
     }
 }

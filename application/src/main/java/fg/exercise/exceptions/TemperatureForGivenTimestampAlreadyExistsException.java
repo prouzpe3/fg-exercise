@@ -9,6 +9,6 @@ public class TemperatureForGivenTimestampAlreadyExistsException extends BadReque
 
     public TemperatureForGivenTimestampAlreadyExistsException(String timestamp) {
         this.code = 1000;
-        this.description = "A temperature record with given timestamp [" + timestamp + "] already exists.";
+        this.description = String.format("A temperature record with given timestamp [%s] already exists.", timestamp);
     }
 }
