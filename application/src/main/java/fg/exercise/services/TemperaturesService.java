@@ -1,8 +1,10 @@
 package fg.exercise.services;
 
 import fg.exercise.apis.TemperaturesApiDelegate;
+import fg.exercise.exceptions.TemperatureForGivenTimestampAlreadyExistsException;
 import fg.exercise.exceptions.TemperatureNotFoundException;
 import fg.exercise.mappers.TemperatureModelMapper;
+import fg.exercise.mappers.TimestampConverter;
 import fg.exercise.models.dtos.GetTemperatureDto;
 import fg.exercise.models.dtos.PostTemperatureDto;
 import fg.exercise.models.dtos.PutTemperatureDto;
@@ -55,6 +57,7 @@ public class TemperaturesService implements TemperaturesApiDelegate {
         Optional<Temperature> optionalTemperature = temperatureRepository.findById(id);
         if (optionalTemperature.isPresent()) {
             Temperature temperature = temperatureModelMapper.convertToEntity(id, putTemperatureDto);
+            throwIfTemperatureWithGivenDateTimeAlreadyExists(temperature);
             temperatureRepository.save(temperature);
             return ResponseEntity.ok(temperatureModelMapper.convertToDto(temperature));
         } else {
@@ -71,7 +74,18 @@ public class TemperaturesService implements TemperaturesApiDelegate {
 
 
     private ResponseEntity<GetTemperatureDto> storeAsNew(Temperature temperature) {
+        throwIfTemperatureWithGivenDateTimeAlreadyExists(temperature);
         temperatureRepository.save(temperature);
         return ResponseEntity.created(URI.create(getRequest().map(nativeWebRequest -> nativeWebRequest.getContextPath() + "/" + temperature.getId()).orElse(""))).body(temperatureModelMapper.convertToDto(temperature));
+    }
+
+
+    private void throwIfTemperatureWithGivenDateTimeAlreadyExists(Temperature temperature) {
+        Optional<Temperature> entityFromDb = temperatureRepository.findTemperatureByLocalDateAndLocalTime(temperature.getLocalDate(), temperature.getLocalTime());
+        if (entityFromDb.isPresent()) {
+            if (temperature.getId() != null && !temperature.getId().equals(entityFromDb.get().getId())) {
+                throw new TemperatureForGivenTimestampAlreadyExistsException(TimestampConverter.dateAndTimeToTimestamp(temperature.getLocalDate(), temperature.getLocalTime()));
+            }
+        }
     }
 }
