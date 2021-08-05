@@ -1,5 +1,6 @@
 package fg.exercise.errors;
 
+import fg.exercise.exceptions.BadRequestException;
 import fg.exercise.exceptions.InvalidTimestampException;
 import fg.exercise.exceptions.NoTemperatureRangeFoundException;
 import fg.exercise.exceptions.TemperatureForGivenTimestampAlreadyExistsException;
@@ -19,7 +20,7 @@ public class BadRequestResponseEntityExceptionHandler extends ResponseEntityExce
             NoTemperatureRangeFoundException.class,
             TemperatureForGivenTimestampAlreadyExistsException.class
     })
-    public ResponseEntity<Object> handleBadRequest(final InvalidTimestampException ex, final WebRequest request) {
+    public ResponseEntity<Object> handleBadRequest(final BadRequestException ex, final WebRequest request) {
         return handleExceptionInternal(ex, ex.toDto(), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 }
