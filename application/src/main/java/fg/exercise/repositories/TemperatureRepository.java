@@ -11,6 +11,10 @@ import java.util.List;
 
 public interface TemperatureRepository extends JpaRepository<Temperature, Long>, PagingAndSortingRepository<Temperature, Long> {
 
-    @Query("select id, localDate, localTime, temperature from Temperature where :lBound <= localTime and localTime <= :uBound order by localDate")
+    @Query("select t from Temperature t " +
+            "where (:lBound <= :uBound and :lBound <= t.localTime and t.localTime <= :uBound) " +
+                "or (:lBound > :uBound and :lBound <= t.localTime and t.localTime >= :uBound) " +
+                "or (:lBound > :uBound and t.localTime <= :lBound and :uBound >= t.localTime) " +
+            "order by t.localDate asc, t.localTime asc")
     List<Temperature> findOrdered(LocalTime lBound, LocalTime uBound);
 }
