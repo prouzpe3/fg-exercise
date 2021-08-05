@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FindLongestSequenceTemperatureRangeServiceTest {
 
-    private TemperatureRangeService temperatureRangeService = new TemperatureRangeService(null, null);
+    private TemperatureRangeServiceImpl temperatureRangeService = new TemperatureRangeServiceImpl(null);
 
 
     private final Double lowerBound = 10d, upperBound = 20d;
