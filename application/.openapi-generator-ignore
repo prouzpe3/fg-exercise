@@ -23,5 +23,6 @@
 #!docs/README.md
 
 pom.xml
-OpenAPIDocumentationConfig.java
+**/OpenAPIDocumentationConfig.java
+**/application.properties
 

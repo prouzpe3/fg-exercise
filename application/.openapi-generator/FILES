@@ -9,7 +9,6 @@ src/main/java/fg/exercise/apis/TemperaturesApi.java
 src/main/java/fg/exercise/apis/TemperaturesApiController.java
 src/main/java/fg/exercise/apis/TemperaturesApiDelegate.java
 src/main/java/fg/exercise/configurations/HomeController.java
-src/main/java/fg/exercise/configurations/OpenAPIDocumentationConfig.java
 src/main/java/fg/exercise/models/dtos/EntityNotFoundDto.java
 src/main/java/fg/exercise/models/dtos/ExceptionDto.java
 src/main/java/fg/exercise/models/dtos/GetTemperatureDto.java
@@ -18,4 +17,3 @@ src/main/java/fg/exercise/models/dtos/IdDto.java
 src/main/java/fg/exercise/models/dtos/PostTemperatureDto.java
 src/main/java/fg/exercise/models/dtos/PutTemperatureDto.java
 src/main/java/fg/exercise/models/dtos/TemperatureDto.java
-src/main/resources/application.properties
