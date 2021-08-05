@@ -81,7 +81,7 @@ public class TemperaturesService implements TemperaturesApiDelegate {
     private void throwIfTemperatureWithGivenDateTimeAlreadyExists(Temperature temperature) {
         Optional<Temperature> entityFromDb = temperatureRepository.findTemperatureByLocalDateAndLocalTime(temperature.getLocalDate(), temperature.getLocalTime());
         if (entityFromDb.isPresent()) {
-            if (temperature.getId() != null && !temperature.getId().equals(entityFromDb.get().getId())) {
+            if (temperature.getId() == null || !entityFromDb.get().getId().equals(temperature.getId())) {
                 throw new TemperatureForGivenTimestampAlreadyExistsException(TimestampConverter.dateAndTimeToTimestamp(temperature.getLocalDate(), temperature.getLocalTime()));
             }
         }
