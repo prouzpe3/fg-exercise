@@ -11,13 +11,12 @@ import java.io.Serializable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.*;
-import org.springframework.hateoas.RepresentationModel;
 
 /**
  * EntityNotFoundDto
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public class EntityNotFoundDto extends RepresentationModel<EntityNotFoundDto>  implements Serializable {
+public class EntityNotFoundDto  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("code")

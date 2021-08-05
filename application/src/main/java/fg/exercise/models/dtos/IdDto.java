@@ -10,13 +10,12 @@ import java.io.Serializable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.*;
-import org.springframework.hateoas.RepresentationModel;
 
 /**
  * IdDto
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public class IdDto extends RepresentationModel<IdDto>  implements Serializable {
+public class IdDto  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("id")

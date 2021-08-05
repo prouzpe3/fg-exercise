@@ -8,7 +8,7 @@ delegatePattern: true
 developerEmail: prouza.pet@gmail.com
 developerName: Petr Prouza
 groupId: fg.exercise
-hateoas: true
+hateoas: false
 hideGenerationTimestamp: true
 invokerPackage: fg.exercise.apis
 licenseName: MIT

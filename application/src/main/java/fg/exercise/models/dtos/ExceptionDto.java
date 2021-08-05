@@ -10,13 +10,12 @@ import java.io.Serializable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.*;
-import org.springframework.hateoas.RepresentationModel;
 
 /**
  * ExceptionDto
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public class ExceptionDto extends RepresentationModel<ExceptionDto>  implements Serializable {
+public class ExceptionDto  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("code")

@@ -11,13 +11,12 @@ import java.io.Serializable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.*;
-import org.springframework.hateoas.RepresentationModel;
 
 /**
  * PutTemperatureDto
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public class PutTemperatureDto extends RepresentationModel<PutTemperatureDto>  implements Serializable {
+public class PutTemperatureDto  implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("timestamp")
