@@ -7,25 +7,30 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 
 public class TimestampConverter {
 
-    public static final String DATE_FORMAT = "yyyy-MM-dd";
+    public static final String DATE_FORMAT = "uuuu-MM-dd";
     public static final String TIME_FORMAT = "HH:mm:ss";
     public static final String TIMESTAMP_FORMAT = DATE_FORMAT + " " + TIME_FORMAT;
 
+
     protected static DateTimeFormatter getTimestampFormatter() {
-        return new DateTimeFormatterBuilder().appendPattern(TIMESTAMP_FORMAT).toFormatter();
+        return new DateTimeFormatterBuilder().appendPattern(TIMESTAMP_FORMAT).toFormatter().withResolverStyle(ResolverStyle.STRICT);
     }
+
 
     protected static DateTimeFormatter getDateFormatter() {
         return new DateTimeFormatterBuilder().appendPattern(DATE_FORMAT).toFormatter();
     }
 
+
     protected static DateTimeFormatter getTimeFormatter() {
         return new DateTimeFormatterBuilder().appendPattern(TIME_FORMAT).toFormatter();
     }
+
 
     public static LocalDate timestampToDate(String timestamp) {
         try {
@@ -35,6 +40,7 @@ public class TimestampConverter {
         }
     }
 
+
     public static LocalTime timestampToTime(String timestamp) {
         try {
             return LocalTime.parse(timestamp, getTimestampFormatter());
@@ -42,6 +48,7 @@ public class TimestampConverter {
             throw new InvalidTimestampException(e);
         }
     }
+
 
     public static String dateAndTimeToTimestamp(LocalDate date, LocalTime time) {
         String dateString = date.format(getDateFormatter());
