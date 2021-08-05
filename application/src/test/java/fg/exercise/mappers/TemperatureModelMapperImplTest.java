@@ -14,11 +14,9 @@ import java.time.LocalTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-@SpringBootTest
 public class TemperatureModelMapperImplTest {
 
-    @Autowired
-    private TemperatureModelMapper temperatureModelMapper;
+    private final TemperatureModelMapper temperatureModelMapper = new TemperatureModelMapperImpl();
 
 
     @Test

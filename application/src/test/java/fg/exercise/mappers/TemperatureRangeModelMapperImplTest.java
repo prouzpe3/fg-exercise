@@ -1,13 +1,8 @@
 package fg.exercise.mappers;
 
-import fg.exercise.models.dtos.GetTemperatureDto;
 import fg.exercise.models.dtos.GetTemperatureRangeDto;
-import fg.exercise.models.dtos.PostTemperatureDto;
-import fg.exercise.models.dtos.PutTemperatureDto;
 import fg.exercise.models.entities.Temperature;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,11 +10,9 @@ import java.time.LocalTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-@SpringBootTest
 public class TemperatureRangeModelMapperImplTest {
 
-    @Autowired
-    private TemperatureRangeModelMapper temperatureRangeModelMapper;
+    private final TemperatureRangeModelMapper temperatureRangeModelMapper = new TemperatureRangeModelMapperImpl();
 
 
     @Test
