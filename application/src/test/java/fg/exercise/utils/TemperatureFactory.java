@@ -17,4 +17,8 @@ public class TemperatureFactory {
         return out;
     }
 
+
+    public static Temperature createRandomTemperature() {
+        return createTemperature((long) (Math.random() * 100), (Math.random() * 100), LocalDate.now(), LocalTime.now());
+    }
 }
