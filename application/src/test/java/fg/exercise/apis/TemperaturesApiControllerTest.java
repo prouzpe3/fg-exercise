@@ -1,6 +1,7 @@
 package fg.exercise.apis;
 
 import fg.exercise.exceptions.TemperatureForGivenTimestampAlreadyExistsException;
+import fg.exercise.exceptions.TemperatureNotFoundException;
 import fg.exercise.mappers.TimestampConverter;
 import fg.exercise.models.entities.Temperature;
 import fg.exercise.repositories.TemperatureRepository;
@@ -21,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -127,4 +128,50 @@ class TemperaturesApiControllerTest {
         assertTrue(mvcResult.getResponse().getContentAsString().contains(
                 "A temperature record with given timestamp [" + timestamp + "] already exists."));
     }
+
+
+    @Test
+    void getTemperatures_shouldReturn200() throws Exception {
+        mockMvc.perform(get("/FG-Exercise/temperatures")
+                .contentType("application/json"))
+                .andExpect(status().isOk());
+    }
+
+
+    @Test
+    void putTemperature_validInput_shouldReturn200() throws Exception {
+        Long id = 1L;
+        when(temperaturesService.temperaturesIdPut(any(), any())).thenReturn(createRandomTemperature());
+        mockMvc.perform(put("/FG-Exercise/temperatures/" + id)
+                .content("{\"timestamp\": \"2021-08-04 16:00:02\",\"temperature\": 10}")
+                .contentType("application/json"))
+                .andExpect(status().isOk());
+    }
+
+
+    @Test
+    void getTemperature_existingTemperature_shouldReturn200() throws Exception {
+        Long id = 1L;
+        when(temperaturesService.temperaturesIdGet(any())).thenReturn(createRandomTemperature());
+        mockMvc.perform(get("/FG-Exercise/temperatures/" + id)
+                .content("{\"timestamp\": \"2021-08-04 16:00:02\",\"temperature\": 10}")
+                .contentType("application/json"))
+                .andExpect(status().isOk());
+    }
+
+
+    @Test
+    void getTemperature_nonExistingTemperature_shouldReturn400() throws Exception {
+        Long id = 1L;
+        when(temperaturesService.temperaturesIdGet(any())).thenAnswer(invocationOnMock -> {
+            throw new TemperatureNotFoundException(id);
+        });
+        mockMvc.perform(get("/FG-Exercise/temperatures/" + id)
+                .content("{\"timestamp\": \"2021-08-04 16:00:02\",\"temperature\": 10}")
+                .contentType("application/json"))
+                .andExpect(status().isNotFound());
+    }
+
+
+    // MORE sophisticated tests should be added
 }
