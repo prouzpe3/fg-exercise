@@ -55,14 +55,12 @@ public class TemperaturesService implements TemperaturesApiDelegate {
     @Override
     public ResponseEntity<GetTemperatureDto> temperaturesIdPut(Long id, PutTemperatureDto putTemperatureDto) throws Exception {
         Optional<Temperature> optionalTemperature = temperatureRepository.findById(id);
-        if (optionalTemperature.isPresent()) {
-            Temperature temperature = temperatureModelMapper.convertToEntity(id, putTemperatureDto);
-            throwIfTemperatureWithGivenDateTimeAlreadyExists(temperature);
-            temperatureRepository.save(temperature);
-            return ResponseEntity.ok(temperatureModelMapper.convertToDto(temperature));
-        } else {
-            return storeAsNew(temperatureModelMapper.convertToEntity(id, putTemperatureDto));
+        if (!optionalTemperature.isPresent()) {
+            throw new TemperatureNotFoundException(id);
         }
+        Temperature temperature = temperatureModelMapper.convertToEntity(id, putTemperatureDto);
+        throwIfTemperatureWithGivenDateTimeAlreadyExists(temperature);
+        return ResponseEntity.ok(temperatureModelMapper.convertToDto(temperatureRepository.save(temperature)));
     }
 
 
