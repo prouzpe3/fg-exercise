@@ -50,7 +50,7 @@ public class OpenAPIDocumentationConfig {
     }
 
     @Bean
-    public Docket customImplementation(ServletContext servletContext, @Value("${openapi.FG-Exercise.base-path:/p6331/FG-Exercise/1.0.0}") String basePath) {
+    public Docket customImplementation(ServletContext servletContext, @Value("${openapi.FG-Exercise.base-path:/FG-Exercise}") String basePath) {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                     .apis(RequestHandlerSelectors.basePackage("fg.exercise.apis"))
