@@ -1,14 +1,12 @@
 package fg.exercise.models.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 
 @Entity
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "local_date", "local_time" }) })
 public class Temperature {
 
     @Id
@@ -17,8 +15,10 @@ public class Temperature {
 
     private Double temperature;
 
+    @Column(name = "local_date")
     private LocalDate localDate;
 
+    @Column(name = "local_time")
     private LocalTime localTime;
 
 
