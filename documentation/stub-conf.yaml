@@ -15,7 +15,7 @@ licenseName: MIT
 licenseUrl: https://github.com/prouzpe3/fg-exercise/blob/main/LICENSE
 modelPackage: fg.exercise.models.dtos
 performBeanValidation: true
-returnSuccessCode: true
+returnSuccessCode: false
 serializableModel: true
 singleContentTypes: true
 title: FG-Exercise

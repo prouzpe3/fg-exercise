@@ -42,7 +42,7 @@ public interface TemperaturesApiDelegate {
                 }
             }
         });
-        return new ResponseEntity<>(HttpStatus.valueOf(200));
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
@@ -54,7 +54,7 @@ public interface TemperaturesApiDelegate {
      * @see TemperaturesApi#temperaturesIdDelete
      */
     default ResponseEntity<Void> temperaturesIdDelete(Long id) throws Exception {
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
@@ -76,7 +76,7 @@ public interface TemperaturesApiDelegate {
                 }
             }
         });
-        return new ResponseEntity<>(HttpStatus.valueOf(200));
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
@@ -100,7 +100,7 @@ public interface TemperaturesApiDelegate {
                 }
             }
         });
-        return new ResponseEntity<>(HttpStatus.valueOf(200));
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
@@ -121,7 +121,7 @@ public interface TemperaturesApiDelegate {
                 }
             }
         });
-        return new ResponseEntity<>(HttpStatus.valueOf(201));
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
 
