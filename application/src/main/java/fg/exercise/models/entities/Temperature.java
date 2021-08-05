@@ -13,12 +13,13 @@ public class Temperature {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private Double temperature;
 
-    @Column(name = "local_date")
+    @Column(name = "local_date", nullable = false)
     private LocalDate localDate;
 
-    @Column(name = "local_time")
+    @Column(name = "local_time", nullable = false)
     private LocalTime localTime;
 
 
