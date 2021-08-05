@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class NotFoundException extends ClientErrorException {
+public abstract class NotFoundException extends ClientErrorException {
 }
