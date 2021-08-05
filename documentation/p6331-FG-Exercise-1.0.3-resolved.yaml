@@ -6,7 +6,7 @@ info:
   license:
     name: MIT
     url: https://github.com/prouzpe3/fg-exercise/blob/main/LICENSE
-  version: 1.0.2
+  version: 1.0.3
 servers:
 - url: https://virtserver.swaggerhub.com/FG-Exercise
   description: SwaggerHub API Auto Mocking
@@ -147,15 +147,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetTemperature'
-        "201":
-          description: Successful Response
-          headers:
-            Location:
-              $ref: '#/components/headers/TemperatureLocation'
+        "404":
+          description: Entity was not found.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetTemperature'
+                $ref: '#/components/schemas/EntityNotFound'
     delete:
       summary: Remove given temperature
       parameters:

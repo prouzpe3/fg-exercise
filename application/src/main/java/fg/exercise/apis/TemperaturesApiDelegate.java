@@ -86,7 +86,7 @@ public interface TemperaturesApiDelegate {
      * @param id  (required)
      * @param putTemperatureDto Body describing the new values for the temperature record to be stored in the database. (required)
      * @return Successful Response (status code 200)
-     *         or Successful Response (status code 201)
+     *         or Entity was not found. (status code 404)
      * @see TemperaturesApi#temperaturesIdPut
      */
     default ResponseEntity<GetTemperatureDto> temperaturesIdPut(Long id,
