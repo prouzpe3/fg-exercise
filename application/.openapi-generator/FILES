@@ -1,5 +1,4 @@
 README.md
-pom.xml
 src/main/java/fg/exercise/OpenAPI2SpringBoot.java
 src/main/java/fg/exercise/RFC3339DateFormat.java
 src/main/java/fg/exercise/apis/ApiUtil.java
