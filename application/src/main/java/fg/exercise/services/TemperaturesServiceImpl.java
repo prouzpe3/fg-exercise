@@ -53,6 +53,8 @@ public class TemperaturesServiceImpl implements TemperaturesService {
 
     @Override
     public Temperature temperaturesPost(Temperature temperature) throws Exception {
+        // TODO PPR - seems that post can also execute update - is it correct from the REST prospective
+        // TODO PPR - hint: I don't think so: https://stackoverflow.com/questions/18470588/in-rest-is-post-or-put-best-suited-for-upsert-operation
         throwIfTemperatureWithGivenDateTimeAlreadyExists(temperature);
         return temperatureRepository.save(temperature);
     }
