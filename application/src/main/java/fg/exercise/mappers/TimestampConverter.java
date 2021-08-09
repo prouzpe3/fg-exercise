@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 
-
+// TODO PPR - why this doesn't work with RFC3339DateFormat class?! The logic should be the same, should it not?
 public class TimestampConverter {
 
     public static final String DATE_FORMAT = "uuuu-MM-dd";

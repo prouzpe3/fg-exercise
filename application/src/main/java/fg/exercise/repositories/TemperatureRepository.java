@@ -10,7 +10,7 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
-
+// TODO PPR - no documentation for the methods
 public interface TemperatureRepository extends JpaRepository<Temperature, Long>, PagingAndSortingRepository<Temperature, Long> {
 
     Optional<Temperature> findTemperatureByLocalDateAndLocalTime(LocalDate localDate, LocalTime localTime);

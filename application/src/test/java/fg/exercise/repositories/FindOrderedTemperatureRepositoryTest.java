@@ -82,6 +82,7 @@ public class FindOrderedTemperatureRepositoryTest {
     public void findOrdered_restrictedRange_shouldReturnOnlyInRange() {
         List<Temperature> temperatureList = temperatureRepository.findOrdered(LocalTime.of(10, 0), LocalTime.of(15, 0));
         assertEquals(4, temperatureList.size());
+        // TODO PPR - this could be refactored out to custom assert method that would be much more readable
         assertTrue(temperatureList.stream().anyMatch(temperature -> temperature.getId().equals(morningTemperature1.getId())));
         assertTrue(temperatureList.stream().anyMatch(temperature -> temperature.getId().equals(afternoonTemperature1.getId())));
         assertTrue(temperatureList.stream().anyMatch(temperature -> temperature.getId().equals(morningTemperature2.getId())));

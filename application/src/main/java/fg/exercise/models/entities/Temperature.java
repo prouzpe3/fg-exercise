@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-
+// TODO PPR - no documentation
 @Entity
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "local_date", "local_time" }) })
 public class Temperature {
@@ -13,9 +13,11 @@ public class Temperature {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    // TODO PPR - double can loose precision in Java, shouldn't we be using BigDecimal?
     @Column(nullable = false)
     private Double temperature;
 
+    // TODO PPR - why not using LocalDateTime here - by this we would avoid using two columns
     @Column(name = "local_date", nullable = false)
     private LocalDate localDate;
 
